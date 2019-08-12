@@ -12,24 +12,32 @@
 
 <body>
     <div id="app">
-        <p v-for='item in items'>{{item.}}</p>
+        <ol>
+                <li v-for='item in items'>{{item.title.label}}</li>
+        </ol>
+        
     </div>
 
     <script>
-        let addr = 'https://rss.itunes.apple.com/api/v1/cn/podcasts/top-podcasts/all/100/explicit.json';
+        let addr = 'https://itunes.apple.com/cn/rss/toppodcasts/limit=100/json';
 
         fetchJsonp(addr)
             .then(function (response) {
                 return response.json()
             }).then(function (json) {
-                console.log('parsed json', json)
+                console.log('parsed json', json.feed.entry)
+
+                vm.items = json.feed.entry;
+
+
             }).catch(function (ex) {
                 console.log('parsing failed', ex)
             })
 
         let vm = new Vue(
-            {
-                data: {
+
+            {   el:'#app',
+                data: {items:''
 
                 }
             }
