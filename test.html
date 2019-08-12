@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="fetch-jsonp.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-for='item in items'>{{item.}}</p>
+    </div>
+
+    <script>
+        let addr = 'https://rss.itunes.apple.com/api/v1/cn/podcasts/top-podcasts/all/100/explicit.json';
+
+        fetchJsonp(addr)
+            .then(function (response) {
+                return response.json()
+            }).then(function (json) {
+                console.log('parsed json', json)
+            }).catch(function (ex) {
+                console.log('parsing failed', ex)
+            })
+
+        let vm = new Vue(
+            {
+                data: {
+
+                }
+            }
+        )
+    </script>
+</body>
+
+</html>
