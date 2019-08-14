@@ -15,8 +15,11 @@
         <li v-for="item in items">
           <img :src="item['im:image'][0].label" />
 
-          <p><a :href="item.link.attributes.href"></a></p>
-          {{ item.title.label }}
+          <p>
+            <a :href="item.link.attributes.href">
+              {{ item.title.label }}
+            </a>
+          </p>
         </li>
       </ol>
     </div>
