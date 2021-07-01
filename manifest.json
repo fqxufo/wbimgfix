@@ -1,7 +1,7 @@
 {
     "name": "wbimgfix",
     "description": "简单修复新浪微博图床",
-    "version": "0.5",
+    "version": "0.51",
     "manifest_version": 2,
     "background": {
         "scripts": [
@@ -18,7 +18,6 @@
      "permissions": [
         "webRequest",
         "webRequestBlocking",
-        "storage",
         "http://*/*",
         "https://*/*"
     ]
